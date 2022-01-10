@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:user_data_project/pages/home_page.dart';
 import 'package:user_data_project/pages/login_page.dart';
+import 'package:user_data_project/pages/main_page.dart';
+import 'package:user_data_project/pages/profile_page.dart';
 import 'package:user_data_project/pages/signup_page.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignUpPage(),
+      home: MainPage(),
     );
   }
 }

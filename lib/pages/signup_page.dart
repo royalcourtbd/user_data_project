@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:user_data_project/pages/login_page.dart';
 import 'package:user_data_project/widgets/app_text.dart';
 import 'package:user_data_project/widgets/buttons.dart';
 import 'package:intl/intl.dart';
 import 'package:user_data_project/widgets/large_text.dart';
+
+enum Gender { Male, Female }
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  Gender? _gender = Gender.Male;
   late bool passwordVisible;
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -29,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          //physics: NeverScrollableScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           reverse: true,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -215,8 +219,48 @@ class _SignUpPageState extends State<SignUpPage> {
                   fontWeight: FontWeight.normal,
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Row(
+                  children: [
+                    AppText(
+                        text: 'Male',
+                        color: Colors.black,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w400),
+                    Radio(
+                      value: Gender.Male,
+                      groupValue: _gender,
+                      onChanged: (Gender? value) {
+                        _gender = value;
+                      },
+                      activeColor: Colors.blue,
+                      fillColor: MaterialStateProperty.all(Colors.blue),
+                    ),
+                    SizedBox(
+                      width: 43,
+                    ),
+                    AppText(
+                        text: 'Female',
+                        color: Colors.black,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w400),
+                    Radio(
+                      value: Gender.Female,
+                      groupValue: _gender,
+                      onChanged: (Gender? value) {
+                        setState(() {
+                          _gender = value;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      fillColor: MaterialStateProperty.all(Colors.blue),
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(
-                height: 59,
+                height: 32,
               ),
               Align(
                 alignment: Alignment.center,
@@ -233,7 +277,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               SizedBox(
-                height: 5,
+                height: 24,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -244,11 +288,17 @@ class _SignUpPageState extends State<SignUpPage> {
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
                   ),
-                  AppText(
-                    text: 'SignIn',
-                    color: Color(0xff007AFF),
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => SignInPage()));
+                    },
+                    child: AppText(
+                      text: 'SignIn',
+                      color: Color(0xff007AFF),
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 ],
               )

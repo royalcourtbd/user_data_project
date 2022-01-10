@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:user_data_project/pages/login_page.dart';
+import 'package:user_data_project/pages/signup_page.dart';
 import 'package:user_data_project/widgets/buttons.dart';
 import 'package:user_data_project/widgets/large_text.dart';
 
@@ -59,40 +61,52 @@ class _HomePageState extends State<HomePage> {
               height: 61,
             ),
             // Login Button
-            ResponsiveButton(
-              text: Text(
-                'Login',
-                style: GoogleFonts.roboto(
-                  textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
+            InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => SignInPage()));
+              },
+              child: ResponsiveButton(
+                text: Text(
+                  'Login',
+                  style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
+                width: 343,
+                height: 48,
+                color: Colors.black,
               ),
-              width: 343,
-              height: 48,
-              color: Colors.black,
             ),
             SizedBox(
               height: 13,
             ),
             //SignUp Button
 
-            ResponsiveButton(
-              text: Text(
-                'SignUp',
-                style: GoogleFonts.roboto(
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
+            InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => SignUpPage()));
+              },
+              child: ResponsiveButton(
+                text: Text(
+                  'SignUp',
+                  style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
+                width: 343,
+                height: 48,
+                color: Colors.white,
               ),
-              width: 343,
-              height: 48,
-              color: Colors.white,
             ),
             SizedBox(
               height: 136,
