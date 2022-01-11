@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:user_data_project/pages/login_page.dart';
 import 'package:user_data_project/widgets/app_text.dart';
 import 'package:user_data_project/widgets/buttons.dart';
-import 'package:intl/intl.dart';
 import 'package:user_data_project/widgets/large_text.dart';
 
 enum Gender { Male, Female }
 
-class SignUpPage extends StatefulWidget {
+class AddNewUser extends StatefulWidget {
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _AddNewUserState createState() => _AddNewUserState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _AddNewUserState extends State<AddNewUser> {
   Gender? _gender = Gender.Male;
   late bool passwordVisible;
   TextEditingController emailController = TextEditingController();
@@ -31,6 +29,17 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        centerTitle: true,
+        title: AppText(
+          text: 'Add New User',
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -38,39 +47,6 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  SizedBox(
-                    height: 38,
-                    width: 19.5,
-                  ),
-                  Icon(
-                    Icons.arrow_back_ios,
-                    color: Color(0xff007AFF),
-                    size: 18,
-                  ),
-                  Text(
-                    'Back',
-                    style: TextStyle(
-                        color: Color(0xff007AFF),
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal,
-                        letterSpacing: -0.41),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: LargeText(
-                  text: 'Sign Up',
-                  color: Colors.black,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
               SizedBox(
                 height: 12,
               ),
@@ -103,18 +79,16 @@ class _SignUpPageState extends State<SignUpPage> {
                     fontSize: 16,
                   ),
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffF2F2F7),
-                    hintText: 'Name',
-                    // border: InputBorder.none,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
+                      filled: true,
+                      fillColor: Color(0xffF2F2F7),
+                      hintText: 'Name',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                        borderRadius: BorderRadius.circular(6),
+                      )),
                 ),
               ),
               SizedBox(
@@ -197,17 +171,16 @@ class _SignUpPageState extends State<SignUpPage> {
                     fontSize: 16,
                   ),
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffF2F2F7),
-                    hintText: 'Enter Mobile Number',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
+                      filled: true,
+                      fillColor: Color(0xffF2F2F7),
+                      hintText: 'Enter Mobile Number',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                        borderRadius: BorderRadius.circular(6),
+                      )),
                 ),
               ),
               SizedBox(
@@ -263,7 +236,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               SizedBox(
-                height: 32,
+                height: 87,
               ),
               Align(
                 alignment: Alignment.center,
@@ -272,39 +245,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 48,
                   color: Colors.black,
                   text: AppText(
-                    text: 'Sign Up',
+                    text: 'Save',
                     color: Colors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-              SizedBox(
-                height: 24,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppText(
-                    text: 'Already have an account?',
-                    color: Color.fromRGBO(0, 0, 0, 0.51),
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => SignInPage()));
-                    },
-                    child: AppText(
-                      text: 'SignIn',
-                      color: Color(0xff007AFF),
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
-              )
             ],
           ),
         ),

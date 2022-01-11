@@ -104,7 +104,7 @@ class _SignInPageState extends State<SignInPage> {
                     fillColor: Color(0xffF2F2F7),
                     hintText: 'Email',
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red),
+                      borderSide: BorderSide(style: BorderStyle.none, width: 0),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     //fillColor: Color(0xffF2F2F7),
@@ -143,7 +143,10 @@ class _SignInPageState extends State<SignInPage> {
                       },
                     ),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     //fillColor: Color(0xffF2F2F7),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_data_project/pages/add_new_user.dart';
 import 'package:user_data_project/widgets/app_text.dart';
 import 'package:user_data_project/widgets/buttons.dart';
 
@@ -60,24 +61,33 @@ class _UserListPageState extends State<UserListPage> {
                       ],
                     ),
                   ),
-                  ResponsiveButton(
-                    width: 131,
-                    height: 26,
-                    color: Colors.black,
-                    text: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.person_outline,
-                          color: Colors.white,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => AddNewUser(),
                         ),
-                        AppText(
-                          text: 'Add New User',
-                          color: Colors.white,
-                          fontSize: 13,
-                          fontWeight: FontWeight.normal,
-                        )
-                      ],
+                      );
+                    },
+                    child: ResponsiveButton(
+                      width: 131,
+                      height: 26,
+                      color: Colors.black,
+                      text: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.person_outline,
+                            color: Colors.white,
+                          ),
+                          AppText(
+                            text: 'Add New User',
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -131,6 +141,19 @@ class _UserListPageState extends State<UserListPage> {
                   ),
                   title: Text(userList[index]),
                   subtitle: Text('Email'),
+                  trailing: ResponsiveButton(
+                    color: Color(0xffC4C4C4),
+                    width: 71,
+                    height: 26,
+                    text: Text(
+                      'Remove',
+                      style: TextStyle(
+                        color: Color(0xff2E2E2E),
+                        fontSize: 13,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
                 );
               },
             )
